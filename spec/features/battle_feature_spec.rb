@@ -25,7 +25,7 @@ RSpec.feature "Battle" do
 
     scenario 'reduces opponent hp by 10' do
       sign_in_and_play
-      expect { click_link 'Attack' } .to change { $player2.hp }.by(-10)
+      expect { click_link 'Attack' } .to change { $game.player2.hp }.by(-10)
     end
   end
 

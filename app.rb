@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
-require 'player'
+require './lib/game'
 
 class Battle < Sinatra::Base
 
@@ -9,12 +9,8 @@ class Battle < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  def set_player
-    @player1 = $player1
-    @player2 = $player2
-  end
-
   get '/' do
+    
     redirect to('/start_battle')
   end
 
@@ -23,19 +19,16 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    $player1 = Player.new(params[:player1])
-    $player2 = Player.new(params[:player2])
+    $game = Game.new(Player.new(params[:player1]), Player.new(params[:player2]))
     redirect to('/play')
   end
 
   get '/play' do
-    set_player
     erb(:play)
   end
 
   get '/attack' do
-    set_player
-    Game.new.attack(@player2)
+    $game.attack(2)
     erb(:attack)
   end
 
