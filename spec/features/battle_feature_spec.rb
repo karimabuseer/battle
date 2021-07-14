@@ -13,4 +13,13 @@ RSpec.feature "Battle" do
     expect(page).to have_text('Player 1: Karim')
     expect(page).to have_text('Player 2: Pav')
   end
+
+  describe '/enter_hp' do
+    scenario "print's player 2's HP" do
+      visit "/enter_hp"
+      fill_in('player2hp', with: '30')
+      click_button('Submit')
+      expect(page).to have_text('Player 2 HP: 30')
+    end
+  end
 end
