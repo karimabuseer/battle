@@ -6,6 +6,9 @@ describe Game do
   it 'pulls information from player' do
     expect(subject.player2.hp).to eq(30)
   end
+  it 'defaults to turn 1' do 
+    expect(subject.player_turn).to eq(1)
+  end
   describe '#attacked' do
     it 'removes 10 by default' do
       expect { subject.attack(2) }.to change {subject.player2.hp }.by(-10)
