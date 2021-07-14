@@ -11,10 +11,18 @@ RSpec.feature "Battle" do
     expect(page).to have_text('Player 2 (Pav)')
   end
 
-  describe '/enter_hp' do
-    scenario "print's player 2's HP" do
+  scenario "print's player 2's HP" do
+    sign_in_and_play
+    expect(page).to have_text('Player 2 (Pav): 30HP')
+  end
+  
+  feature 'Attacking the opponent!' do
+    scenario 'attacking Player 2' do
       sign_in_and_play
-      expect(page).to have_text('Player 2 (Pav): 30HP')
+      click_link 'Attack'
+      expect(page).to have_text('Karim attacked Pav!')
     end
   end
+
+
 end

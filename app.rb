@@ -9,6 +9,11 @@ class Battle < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  def set_player
+    @player1 = session[:player1]
+    @player2 = session[:player2]
+  end
+
   get '/' do
     redirect to('/start_battle')
   end
@@ -24,9 +29,13 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    @player1 = session[:player1]
-    @player2 = session[:player2]
+    set_player
     erb(:play)
+  end
+
+  get '/attack' do
+    set_player
+    erb(:attack)
   end
 
   run! if app_file == $0
