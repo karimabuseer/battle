@@ -9,10 +9,10 @@ class Battle < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  # def set_player
-  #   @player1 = $player1
-  #   @player2 = $player2
-  # end
+  def set_player
+    @player1 = $player1
+    @player2 = $player2
+  end
 
   get '/' do
     redirect to('/start_battle')
@@ -29,13 +29,13 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    # set_player
+    set_player
     erb(:play)
   end
 
   get '/attack' do
-    # set_player
-    $player2.attacked
+    set_player
+    Game.new.attack(@player2)
     erb(:attack)
   end
 

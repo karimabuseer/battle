@@ -5,7 +5,7 @@ class Player
     @hp = 30
   end
 
-  def attacked(damage = 10)
+  def damage(damage = 10)
     @hp -= damage
   end
 end
