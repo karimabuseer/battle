@@ -5,7 +5,7 @@ class Player
     @hp = 30
   end
 
-  def damage(damage = 10)
+  def wound(damage)
     @hp -= damage
   end
 end
