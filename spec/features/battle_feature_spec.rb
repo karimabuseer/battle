@@ -17,10 +17,15 @@ RSpec.feature "Battle" do
   end
   
   feature 'Attacking the opponent!' do
-    scenario 'attacking Player 2' do
+    scenario 'confirms I have attacked' do
       sign_in_and_play
       click_link 'Attack'
       expect(page).to have_text('Karim attacked Pav!')
+    end
+
+    scenario 'reduces opponent hp by 10' do
+      sign_in_and_play
+      expect { click_link 'Attack' } .to change { $player2.hp }.by(-10)
     end
   end
 
