@@ -10,7 +10,7 @@ class Battle < Sinatra::Base
   end
 
   get '/' do
-    'Testing infrastructure working!'
+    redirect to('/start_battle')
   end
 
   get '/start_battle' do
@@ -27,22 +27,6 @@ class Battle < Sinatra::Base
     @player1 = session[:player1]
     @player2 = session[:player2]
     erb(:play)
-  end
-
-  get '/enter_hp' do
-    erb(:enterhp)
-  end
-
-  post '/hp' do
-    session[:player1hp] = params[:player1hp]
-    session[:player2hp] = params[:player2hp]
-    redirect to('/show_hp')
-  end
-
-  get '/show_hp' do
-    @player1hp = session[:player1hp]
-    @player2hp = session[:player2hp]
-    erb(:show_hp)
   end
 
   run! if app_file == $0
