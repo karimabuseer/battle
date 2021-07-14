@@ -5,6 +5,10 @@
 # files.
 require_relative '../app.rb'
 require 'capybara/rspec'
+require_relative './features/web_helpers.rb'
+
+
+
 ENV['RACK_ENV'] = 'test'
 Capybara.app = Battle
 # Given that it is always loaded, you are encouraged to keep this file as
