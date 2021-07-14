@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
-
+require 'player'
 
 class Battle < Sinatra::Base
 
@@ -10,8 +10,8 @@ class Battle < Sinatra::Base
   end
 
   def set_player
-    @player1 = session[:player1]
-    @player2 = session[:player2]
+    @player1 = $player1
+    @player2 = $player2
   end
 
   get '/' do
@@ -23,8 +23,8 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    session[:player1] = params[:player1]
-    session[:player2] = params[:player2]
+    $player1 = Player.new(params[:player1])
+    $player2 = Player.new(params[:player2])
     redirect to('/play')
   end
 
