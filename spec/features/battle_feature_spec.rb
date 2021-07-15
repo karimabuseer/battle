@@ -32,6 +32,20 @@ RSpec.feature "Battle" do
       sign_in_and_play
       expect { click_link 'Attack' } .to change { $game.player2.hp }.by(-10)
     end
+
+    scenario 'prints reduced hp' do
+      sign_in_and_play
+      click_link 'Attack'
+      click_link 'Next turn'
+      expect(page).to have_text('Player 2 (Pav): 20HP')
+    end
+
+    scenario 'causes turns to change' do
+      sign_in_and_play
+      click_link 'Attack'
+      click_link 'Next turn'
+      expect(page).to have_text('Current turn: Player 2')
+    end
   end
 
 

@@ -1,1 +1,8 @@
+<% if $game.player_turn == 2 %>
 <%=$game.player1.name%> attacked <%=$game.player2.name%>!
+<% end %>
+<% if $game.player_turn == 1 %>
+<%=$game.player2.name%> attacked <%=$game.player1.name%>!
+<% end %>
+
+<a href="/play">Next turn</a>
