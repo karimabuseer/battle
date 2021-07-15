@@ -11,7 +11,11 @@ describe Game do
   end
   describe '#attacked' do
     it 'removes 10 by default' do
-      expect { subject.attack(2) }.to change {subject.player2.hp }.by(-10)
+      expect { subject.attack }.to change {subject.player2.hp }.by(-10)
+    end
+    it 'causes player turn to change' do 
+      subject.attack(2)
+      expect(subject.player_turn).to eq(2)
     end
   end
 end

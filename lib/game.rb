@@ -7,9 +7,9 @@ class Game
     @player_turn = 1
   end
 
-  def attack(target,damage = 10)
-    @player1.wound(damage) if target == 1
-    @player2.wound(damage) if target == 2
+  def attack(damage = 10)
+    (@player1.wound(damage) ; @player_turn = 1) if @player_turn == 2
+    (@player2.wound(damage) ; @player_turn = 2) if @player_turn == 1
   end
 
 end
