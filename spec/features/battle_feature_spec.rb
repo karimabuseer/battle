@@ -35,17 +35,22 @@ RSpec.feature "Battle" do
 
     scenario 'prints reduced hp' do
       sign_in_and_play
-      click_link 'Attack'
-      click_link 'Next turn'
+      attack_and_proceed
       expect(page).to have_text('Player 2 (Pav): 20HP')
     end
 
     scenario 'causes turns to change' do
       sign_in_and_play
-      click_link 'Attack'
-      click_link 'Next turn'
+      attack_and_proceed
       expect(page).to have_text('Current turn: Player 2')
     end
+  end
+  scenario 'Reducing an opponent to 0hp takes you to a winner/end game screen' do
+    sign_in_and_play
+    4.times{ attack_and_proceed }
+    click_link 'Attack'
+    expect(page).to have_text('The winner is Karim')
+    
   end
 
 

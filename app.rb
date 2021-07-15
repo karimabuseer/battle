@@ -29,7 +29,12 @@ class Battle < Sinatra::Base
 
   get '/attack' do
     $game.attack
+    redirect to ('/win') if $game.won?
     erb(:attack)
+  end
+
+  get '/win' do
+    erb(:winner)
   end
 
   run! if app_file == $0

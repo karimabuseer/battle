@@ -29,4 +29,10 @@ describe Game do
       expect(subject.player_turn).to eq(1)
     end
   end
+  describe '#set_winner' do
+    it 'sets winner when opponent hits 0hp' do
+      subject.attack(30)
+      expect(subject.winner).to eq('Karim')
+    end 
+  end
 end
