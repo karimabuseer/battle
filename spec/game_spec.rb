@@ -14,8 +14,19 @@ describe Game do
       expect { subject.attack }.to change {subject.player2.hp }.by(-10)
     end
     it 'causes player turn to change' do 
-      subject.attack(2)
+      subject.attack
       expect(subject.player_turn).to eq(2)
+    end
+    it 'causes different players to take damage on different turns' do
+      expect { subject.attack }.to change {subject.player2.hp }.by(-10)
+      expect { subject.attack }.to change {subject.player1.hp }.by(-10)
+    end
+    it 'causes turns to change twice' do
+      expect(subject.player_turn).to eq(1)
+      subject.attack
+      expect(subject.player_turn).to eq(2)
+      subject.attack
+      expect(subject.player_turn).to eq(1)
     end
   end
 end

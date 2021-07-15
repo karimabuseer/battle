@@ -15,6 +15,11 @@ RSpec.feature "Battle" do
     sign_in_and_play
     expect(page).to have_text('Player 2 (Pav): 30HP')
   end
+
+  scenario "print's current player turn" do
+    sign_in_and_play
+    expect(page).to have_text('Current turn: Player 1')
+  end
   
   feature 'Attacking the opponent!' do
     scenario 'confirms I have attacked' do
