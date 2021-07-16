@@ -1,4 +1,4 @@
-
+require_relative '../../app.rb'
 RSpec.feature "Battle" do
   scenario "expect homepage to contain text" do
     visit "/"
@@ -26,11 +26,6 @@ RSpec.feature "Battle" do
       sign_in_and_play
       click_link 'Attack'
       expect(page).to have_text('Karim attacked Pav!')
-    end
-
-    scenario 'reduces opponent hp by 10' do
-      sign_in_and_play
-      expect { click_link 'Attack' } .to change { $game.player2.hp }.by(-10)
     end
 
     scenario 'prints reduced hp' do

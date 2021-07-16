@@ -9,7 +9,12 @@ class Battle < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  
+
   get '/' do
+    @game = nil
+    params[:player1] = nil
+    params[:player2] = nil
     redirect to('/start_battle')
   end
 
