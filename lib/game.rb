@@ -1,4 +1,5 @@
 require_relative 'player'
+require_relative 'action'
 class Game
   attr_reader :player1, :player2, :player_turn, :winner
   def self.create(player1, player2)
@@ -11,6 +12,7 @@ class Game
     @player2 = player2
     @player_turn = 1
     @winner = nil
+    @action = Action.new
   end
 
   def attack(damage = 10)

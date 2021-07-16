@@ -2,4 +2,29 @@ Current turn: Player <%=@game.player_turn%><br>
 Player 1 (<%=@game.player1.name%>): <%=@game.player1.hp%>HP<br> 
 Player 2 (<%=@game.player2.name%>): <%=@game.player2.hp%>HP
 
-<a href="/attack">Attack</a>
+
+<br>
+<table style="width:50%">
+  <tr>
+    <th>Action</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><a href="/attack">Attack</a></td>
+    <td>Deals a flat amount of damage dependent on creature</td>
+  </tr>
+  <tr>
+    <td>Poison</td>
+    <td>Deal a small amount of recurring damage</td>
+  </tr>
+<tr>
+    <td>Hypnotise</td>
+    <td>Deal a small amount of damage; small chance of causing opponent to deal 0 damage with next attack</td>
+  </tr>
+  <td>Sleep</td>
+    <td>Chance for opponent to lose next turn</td>
+  </tr>
+  <td>Heal</td>
+    <td>Regain 5 hit points</td>
+  </tr>
+</table>
