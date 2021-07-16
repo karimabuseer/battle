@@ -3,7 +3,7 @@ class Game
   attr_reader :player1, :player2, :player_turn, :winner
   def self.create(player1, player2)
     p 'creating new game...'
-     @game = Game.new(player1, player2)
+     @game = Game.new(Player.new(player1), Player.new(player2))
   end
   
   def initialize(player1, player2)
@@ -29,12 +29,8 @@ class Game
     @player1.hp == 0 || @player2.hp == 0
   end
 
-  def check_winner
-    winner if won?
-  end
-
   def winner
-    @player1.hp > @player2.hp ? (@winner = @player1.name) : (@winner = @player2.name) if won?
+    @player1.hp > @player2.hp ? (@winner = @player1.name) : (@winner = @player2.name)
   end
 
 end
